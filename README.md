@@ -8,6 +8,9 @@ Simple budget tracker app converted to Progressive Web App with offline access a
 
 ![screenshot of downloaded PWA](./screenshot.png)
 
+## Link to Deployed App
+Visit the live app at [budget-tracker-pwa-0.herokuapp.com](https://budget-tracker-pwa-0.herokuapp.com/)
+
 # Tools Used
 
 - Service Worker
