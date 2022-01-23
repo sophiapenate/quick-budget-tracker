@@ -5,6 +5,7 @@ const FILES_TO_CACHE = [
   "./",
   "./index.html",
   "./js/index.js",
+  "./js/idb.js",
   "./css/styles.css",
   "./icons/icon-72x72.png",
   "./icons/icon-96x96.png",
@@ -56,7 +57,7 @@ self.addEventListener("fetch", (e) => {
               // intercept fetch response...
               .then((response) => {
                 // check if response comes back good...
-                if (e.request.method === "GET" && response.status === 200) {
+                if (e.request.method !== "POST" && response.status === 200) {
                   // add request/response to cache
                   cache.put(e.request, response.clone());
                 }
