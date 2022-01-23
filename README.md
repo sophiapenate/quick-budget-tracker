@@ -4,6 +4,10 @@
 
 Simple budget tracker app converted to Progressive Web App with offline access and functionality. Users are able to load the app from their cache and add entries while offline. Once the app comes back online, entries stores in IndexedDB will automatically upload to the server.
 
+## Screenshot
+
+![screenshot of downloaded PWA](./screenshot.png)
+
 # Tools Used
 
 - Service Worker
