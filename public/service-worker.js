@@ -1,7 +1,20 @@
 const CACHE_NAME = "budget-tracker-v1";
 const DATA_CACHE_NAME = "budget-tracker-data-v1";
 
-const FILES_TO_CACHE = ["./", "./index.html", "./js/index.js", "./css/styles.css"];
+const FILES_TO_CACHE = [
+  "./",
+  "./index.html",
+  "./js/index.js",
+  "./css/styles.css",
+  "./icons/icon-72x72.png",
+  "./icons/icon-96x96.png",
+  "./icons/icon-128x128.png",
+  "./icons/icon-144x144.png",
+  "./icons/icon-152x152.png",
+  "./icons/icon-192x192.png",
+  "./icons/icon-384x384.png",
+  "./icons/icon-512x512.png",
+];
 
 // install service worker
 self.addEventListener("install", function (e) {
@@ -38,21 +51,23 @@ self.addEventListener("fetch", (e) => {
         .open(DATA_CACHE_NAME)
         .then((cache) => {
           // send fetch request...
-          return fetch(e.request)
-            // intercept fetch response...
-            .then((response) => {
-              // check if response comes back good...
-              if (e.request.method === "GET" && response.status === 200) {
-                // add request/response to cache
-                cache.put(e.request, response.clone());
-              }
-              return response;
-            })
-            // if fetch request failed...
-            .catch((err) => {
-              // try getting requested data from cache
-              return cache.match(e.request);
-            });
+          return (
+            fetch(e.request)
+              // intercept fetch response...
+              .then((response) => {
+                // check if response comes back good...
+                if (e.request.method === "GET" && response.status === 200) {
+                  // add request/response to cache
+                  cache.put(e.request, response.clone());
+                }
+                return response;
+              })
+              // if fetch request failed...
+              .catch((err) => {
+                // try getting requested data from cache
+                return cache.match(e.request);
+              })
+          );
         })
         .catch((err) => console.log(err))
     );
